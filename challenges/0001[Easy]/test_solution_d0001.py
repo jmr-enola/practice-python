@@ -1,4 +1,4 @@
-from solution import solution01, solution02
+from solution_d0001 import solution01, solution02
 
 def test_solution01():
     #Test Condition 1
