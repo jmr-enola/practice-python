@@ -1,2 +1,2 @@
 # practice-python
-Practice problems solved suing python.
+Practice problems solved using python.
