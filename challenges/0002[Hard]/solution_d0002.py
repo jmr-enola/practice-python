@@ -17,3 +17,18 @@ def solution01 (integers: list ) -> list:
         product_list.append(product / element)
 
     return product_list
+
+def solution02 (integers: list) -> list:
+    product_list = []
+
+    #O(n^2)
+    for i in range(len(integers)):
+        product = 1
+        
+        for j in range(len(integers)):
+            if (j != i):
+                product *= integers[j]
+        
+        product_list.append(product)
+
+    return product_list
