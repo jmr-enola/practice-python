@@ -13,6 +13,7 @@ What if, instead of being able to climb 1 or 2 steps at a time, you could climb 
 '''
 
 from math import factorial
+from typing import Set
 
 def solution01(Nsteps: int) -> int:
 
@@ -20,11 +21,11 @@ def solution01(Nsteps: int) -> int:
     twos = 0
     ways = 0
 
-    while (pow(2, twos) <= Nsteps):
-        ones = Nsteps - pow(2, twos)
+    while (2 * twos <= Nsteps):
+        ones = Nsteps - 2 * twos
         n = ones + twos
-        print(ones, twos, n)
         ways += factorial(n) / (factorial(ones) * factorial(twos))
+        print(ones, twos, ways)
         twos += 1
         
     return int(ways)
