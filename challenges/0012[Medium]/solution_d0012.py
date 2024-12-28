@@ -29,3 +29,14 @@ def solution01(Nsteps: int) -> int:
         twos += 1
         
     return int(ways)
+
+
+def solution02(Nsteps: int) -> int:
+    
+    if Nsteps == 0:
+        return 1
+    
+    if Nsteps < 0:
+        return 0
+    
+    return solution02(Nsteps-1) + solution02(Nsteps-2)
