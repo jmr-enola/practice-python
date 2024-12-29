@@ -16,16 +16,20 @@ from math import factorial
 from typing import Set
 
 def solution01(Nsteps: int) -> int:
+    
+    if Nsteps == 1:
+        return 1
+    
+    if Nsteps <= 0:
+        return 0
 
     ones = 0
     twos = 0
     ways = 0
 
-    while (2 * twos <= Nsteps):
+    while (Nsteps >= 2 * twos):
         ones = Nsteps - 2 * twos
-        n = ones + twos
-        ways += factorial(n) / (factorial(ones) * factorial(twos))
-        print(ones, twos, ways)
+        ways += factorial(ones + twos) / (factorial(ones) * factorial(twos))
         twos += 1
         
     return int(ways)
@@ -40,3 +44,25 @@ def solution02(Nsteps: int) -> int:
         return 0
     
     return solution02(Nsteps-1) + solution02(Nsteps-2)
+
+def solution03(Nsteps: int, ways: Set[int]) -> int:
+    if Nsteps == 0:
+        return 0
+    elif Nsteps == 1:
+        return 1
+
+    dp = [0] * (Nsteps + 1)
+    dp[0] = 1
+
+    for i in range(1, Nsteps + 1):
+        total = 0
+        for x in ways:
+            if i - x >= 0:
+                total += dp[i - x]
+        dp[i] = total
+
+    return dp[Nsteps]
+
+
+
+
